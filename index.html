@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>São José Condomínio Clube</title>
+  <meta name="description" content="São José Condomínio Clube — Qualidade de vida, lazer e segurança para sua família." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:      #1e6b3c;
+      --green-dark: #154d2b;
+      --green-light:#2a8f52;
+      --gold:       #c8a84b;
+      --gold-light: #e2c878;
+      --white:      #ffffff;
+      --gray-50:    #f9f9f7;
+      --gray-100:   #f0efea;
+      --gray-700:   #3c3c3c;
+      --radius:     12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--gray-700);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 6%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    .nav-logo {
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--green-dark); letter-spacing: .5px;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: .9rem; font-weight: 500;
+      color: var(--gray-700); transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta {
+      background: var(--green); color: var(--white);
+      padding: 10px 22px; border-radius: 50px;
+      text-decoration: none; font-size: .9rem; font-weight: 600;
+      transition: background .2s, transform .15s;
+    }
+    .nav-cta:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 55%, var(--green-light) 100%);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 6% 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; max-width: 780px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(200,168,75,.2); border: 1px solid var(--gold);
+      color: var(--gold-light); font-size: .8rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 6px 18px; border-radius: 50px; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800; color: var(--white);
+      line-height: 1.15; margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--gold-light); }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,.85);
+      max-width: 560px; margin: 0 auto 36px;
+    }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--green-dark);
+      padding: 15px 36px; border-radius: 50px;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none; transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,.5); color: var(--white);
+      padding: 13px 34px; border-radius: 50px;
+      font-weight: 600; font-size: 1rem;
+      text-decoration: none; transition: border-color .2s, background .2s;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
+
+    /* ── SECTION BASE ── */
+    section { padding: 90px 6%; }
+    .section-label {
+      display: block; text-align: center;
+      font-size: .78rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 10px;
+    }
+    .section-title {
+      text-align: center; font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 800; color: var(--green-dark);
+      margin-bottom: 14px; line-height: 1.2;
+    }
+    .section-sub {
+      text-align: center; max-width: 580px; margin: 0 auto 56px;
+      font-size: 1rem; color: #666;
+    }
+
+    /* ── DIFERENCIAIS ── */
+    .diferenciais { background: var(--gray-50); }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 24px; max-width: 1100px; margin: 0 auto;
+    }
+    .card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 36px 28px; text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .card-icon {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--green-light));
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; font-size: 1.7rem;
+    }
+    .card h3 { font-size: 1.05rem; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
+    .card p { font-size: .9rem; color: #666; }
+
+    /* ── LAZER ── */
+    .lazer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px; max-width: 1100px; margin: 0 auto;
+    }
+    .lazer-item {
+      background: var(--green-dark); color: var(--white);
+      border-radius: var(--radius); padding: 28px 20px;
+      text-align: center; font-weight: 600; font-size: .95rem;
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+      transition: background .2s, transform .2s;
+    }
+    .lazer-item:hover { background: var(--green); transform: translateY(-4px); }
+    .lazer-item span:first-child { font-size: 2rem; }
+
+    /* ── LOCALIZAÇÃO ── */
+    .localizacao { background: var(--gray-50); }
+    .loc-content {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; max-width: 1100px; margin: 0 auto; align-items: center;
+    }
+    .loc-text h3 { font-size: 1.5rem; font-weight: 700; color: var(--green-dark); margin-bottom: 16px; }
+    .loc-text p { font-size: .95rem; color: #555; margin-bottom: 12px; }
+    .loc-list { list-style: none; padding: 0; }
+    .loc-list li {
+      font-size: .9rem; color: #444; padding: 6px 0;
+      border-bottom: 1px solid var(--gray-100);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .loc-list li::before { content: '✓'; color: var(--green); font-weight: 700; }
+    .map-placeholder {
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      height: 360px; background: var(--gray-100);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; color: #999; flex-direction: column; gap: 12px;
+    }
+    .map-placeholder span { font-size: 2rem; }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      text-align: center; color: var(--white);
+    }
+    .cta-final h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; margin-bottom: 16px; }
+    .cta-final p { font-size: 1.05rem; opacity: .9; max-width: 520px; margin: 0 auto 36px; }
+    .cta-phone {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: var(--green-dark);
+      padding: 16px 40px; border-radius: 50px;
+      font-weight: 700; font-size: 1.1rem; text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .cta-phone:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green-dark); color: rgba(255,255,255,.6);
+      text-align: center; padding: 32px 6%;
+      font-size: .85rem;
+    }
+    footer strong { color: var(--gold); }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .loc-content { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">São José <span>Condomínio Clube</span></div>
+    <ul class="nav-links">
+      <li><a href="#diferenciais">Diferenciais</a></li>
+      <li><a href="#lazer">Lazer</a></li>
+      <li><a href="#localizacao">Localização</a></li>
+    </ul>
+    <a href="#contato" class="nav-cta">Quero Conhecer</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <span class="hero-badge">Lançamento Exclusivo</span>
+      <h1>Viva com <span>qualidade</span> e <span>sofisticação</span></h1>
+      <p>Um condomínio clube pensado para proporcionar o melhor em lazer, segurança e conforto para você e sua família.</p>
+      <div class="hero-btns">
+        <a href="#contato" class="btn-primary">Agendar Visita</a>
+        <a href="#lazer" class="btn-outline">Ver Estrutura</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIAIS -->
+  <section class="diferenciais" id="diferenciais">
+    <span class="section-label">Por que escolher</span>
+    <h2 class="section-title">Diferenciais do Condomínio</h2>
+    <p class="section-sub">Tudo o que você precisa num só lugar, com padrão e qualidade que fazem a diferença.</p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>Segurança 24h</h3>
+        <p>Portaria eletrônica, câmeras e monitoramento durante todo o dia.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏊</div>
+        <h3>Área de Lazer Completa</h3>
+        <p>Piscinas, quadras, salões e muito mais para toda a família.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌿</div>
+        <h3>Áreas Verdes</h3>
+        <p>Espaços paisagísticos planejados para bem-estar e contato com a natureza.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏠</div>
+        <h3>Infraestrutura Moderna</h3>
+        <p>Acabamentos premium, energia solar e infraestrutura de alto padrão.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAZER -->
+  <section id="lazer">
+    <span class="section-label">Estrutura</span>
+    <h2 class="section-title">Área de Lazer</h2>
+    <p class="section-sub">Uma estrutura completa de clube dentro do seu condomínio.</p>
+    <div class="lazer-grid">
+      <div class="lazer-item"><span>🏊</span> Piscina Adulto</div>
+      <div class="lazer-item"><span>🧒</span> Piscina Infantil</div>
+      <div class="lazer-item"><span>🎾</span> Quadra de Tênis</div>
+      <div class="lazer-item"><span>⚽</span> Quadra Society</div>
+      <div class="lazer-item"><span>🏋️</span> Academia</div>
+      <div class="lazer-item"><span>🎉</span> Salão de Festas</div>
+      <div class="lazer-item"><span>🍖</span> Espaço Gourmet</div>
+      <div class="lazer-item"><span>🧒🏻</span> Playground</div>
+      <div class="lazer-item"><span>📚</span> Coworking</div>
+      <div class="lazer-item"><span>🐾</span> Pet Place</div>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO -->
+  <section class="localizacao" id="localizacao">
+    <span class="section-label">Onde estamos</span>
+    <h2 class="section-title">Localização Privilegiada</h2>
+    <p class="section-sub">Bem localizado, com fácil acesso às principais vias e comércios da região.</p>
+    <div class="loc-content">
+      <div class="loc-text">
+        <h3>São José, SC</h3>
+        <p>Estrategicamente localizado em São José, com proximidade a tudo que sua família precisa.</p>
+        <ul class="loc-list">
+          <li>Próximo a escolas e universidades</li>
+          <li>Supermercados e comércio a poucos minutos</li>
+          <li>Acesso rápido à BR-101 e Via Expressa</li>
+          <li>Hospitais e clínicas nas proximidades</li>
+          <li>Shoppings e centros comerciais</li>
+        </ul>
+      </div>
+      <div class="map-placeholder">
+        <span>📍</span>
+        São José, Santa Catarina<br>
+        <small>Mapa em breve</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="contato">
+    <h2>Pronto para dar o próximo passo?</h2>
+    <p>Entre em contato com nossa equipe e agende uma visita ao São José Condomínio Clube.</p>
+    <a href="https://wa.me/5548999999999" class="cta-phone">
+      📲 Falar com um Consultor
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 <strong>São José Condomínio Clube</strong>. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
