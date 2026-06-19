@@ -92,7 +92,7 @@
 
   /* ─── SECTION BASE ─── */
   section { padding: 90px 24px; }
-  .container { max-width: 1100px; margin: 0 auto; }
+  .container { max-width: 1100px; margin: 0 auto; text-align: center; }
   .section-kicker {
     display: inline-block;
     font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
@@ -103,7 +103,19 @@
     margin-bottom: 20px;
   }
   .section-title { font-size: clamp(28px, 4vw, 44px); margin-bottom: 16px; }
-  .section-sub { font-size: 18px; color: var(--text-muted); max-width: 620px; line-height: 1.7; }
+  .section-sub { font-size: 18px; color: var(--text-muted); max-width: 620px; line-height: 1.7; margin: 0 auto 16px; }
+
+  /* ─── OVERRIDES: left-align internals ─── */
+  .solucao-bullets, .planta-features, .planta-body, .preco-itens,
+  .loc-cats, .loc-items, .zella-benefits, .cta-alt, .cta-direct,
+  .form-card, .dep-text, .dep-author, .agit-points, .faq-list,
+  .preco-card, .preco-obs, .zella-card > div { text-align: left; }
+  .aut-num-card { text-align: center; }
+  .loc-item { text-align: left; }
+  .hero-content { text-align: center; }
+  .dor-card { text-align: left; }
+  .lazer-overlay { text-align: left; }
+  .urgencia-points { text-align: center; justify-content: center; }
 
   /* ─── HERO ─── */
   #hero {
@@ -112,15 +124,15 @@
     position: relative;
     overflow: hidden;
     padding: 0 24px;
-    background: linear-gradient(160deg, #050c18 0%, #0a1525 50%, #0d1e35 100%);
+    background-image: url('https://saojosecondominioclube.com.br/wp-content/uploads/elementor/thumbs/01-PISCINA-qvk37dvukm2qnka8v525pubyhbrxfitqfz07xxei40.jpg');
+    background-size: cover;
+    background-position: center;
   }
 
   #hero::before {
     content: '';
     position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(232,101,10,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(30,80,160,0.12) 0%, transparent 60%);
+    background: linear-gradient(110deg, rgba(5,12,24,0.97) 0%, rgba(8,18,38,0.88) 50%, rgba(10,22,50,0.70) 100%);
     pointer-events: none;
   }
 
@@ -129,16 +141,15 @@
     position: absolute;
     top: -80px; right: -80px;
     width: 500px; height: 500px;
-    background: radial-gradient(circle, rgba(232,101,10,0.15) 0%, rgba(232,101,10,0.04) 40%, transparent 70%);
+    background: radial-gradient(circle, rgba(232,101,10,0.12) 0%, rgba(232,101,10,0.03) 40%, transparent 70%);
     pointer-events: none;
     border-radius: 50%;
   }
 
   .hero-inner {
-    max-width: 1100px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    max-width: 800px; margin: 0 auto;
     position: relative; z-index: 1;
-    padding: 120px 0 80px;
+    padding: 160px 0 120px;
   }
 
   .hero-kicker {
@@ -175,46 +186,7 @@
     font-size: 13px; font-weight: 600;
   }
 
-  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
-
-  .hero-visual { position: relative; }
-  .hero-img-wrap {
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
-  }
-  .hero-img-wrap img { width: 100%; display: block; height: 480px; object-fit: cover; }
-
-  .hero-img-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 50%, rgba(8,13,20,0.7) 100%);
-  }
-
-  .hero-stat-card {
-    position: absolute; bottom: -24px; left: -24px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
-    backdrop-filter: blur(12px);
-  }
-  .hero-stat-num { font-size: 32px; font-weight: 900; font-family: 'Playfair Display', serif; color: var(--accent); }
-  .hero-stat-label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
-
-  .hero-stat-card2 {
-    position: absolute; top: 24px; right: -24px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
-    backdrop-filter: blur(12px);
-  }
-  .live-dot { display: inline-block; width:8px; height:8px; background:#4ade80; border-radius:50%; margin-right:6px; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-  .hero-stat-card2 span { font-size:13px; font-weight:600; color: var(--text); }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
 
   /* ─── DOR ─── */
   #dor { background: var(--bg2); }
@@ -320,7 +292,7 @@
   .planta-card:hover { border-color: rgba(232,101,10,0.4); transform: translateY(-4px); }
   .planta-img { height: 260px; overflow: hidden; background: var(--bg3); }
   .planta-img img { width:100%; height:100%; object-fit:contain; display:block; padding: 20px; }
-  .planta-body { padding: 28px; }
+  .planta-body { padding: 28px; text-align: left; }
   .planta-tag {
     display: inline-block;
     font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
@@ -411,7 +383,7 @@
   .faq-item.open .faq-q .arrow { transform: rotate(45deg); }
   .faq-a { display:none; padding: 0 26px 22px; color: var(--text-muted); font-size: 15px; line-height: 1.8; }
   .faq-item.open .faq-a { display: block; }
-  .faq-cta { margin-top: 32px; }
+  .faq-cta { margin-top: 32px; text-align: center; }
 
   /* ─── AUTORIDADE ─── */
   #autoridade { background: var(--bg2); }
@@ -558,8 +530,7 @@
   /* ─── RESPONSIVE ─── */
   @media (max-width: 768px) {
     section { padding: 60px 20px; }
-    .hero-inner { grid-template-columns: 1fr; padding: 100px 0 60px; gap: 40px; }
-    .hero-visual { display: none; }
+    .hero-inner { padding: 120px 0 80px; }
     .dor-grid { grid-template-columns: 1fr; }
     .agit-inner { grid-template-columns: 1fr; }
     .agit-visual { display: none; }
@@ -593,130 +564,54 @@
     <div class="hero-content">
       <div class="hero-kicker">São Sebastião do Paraíso <span>· MG</span></div>
       <h1 class="hero-h1">
-        O primeiro <span class="accent">Condomínio Clube</span> da cidade está em entrega
+        O primeiro <span class="accent">Condomínio Clube</span> da cidade já está sendo entregue
       </h1>
-      <p class="hero-sub">Torre B com chaves no próximo mês · lazer 100% pronto · <strong style="color:var(--accent2)">15 unidades restantes</strong></p>
-      <div class="hero-badges">
-        <div class="hero-badge">A partir de R$ 350.000</div>
-        <div class="hero-badge">Torre A entregue e habitada</div>
-        <div class="hero-badge">FGTS + Caixa Econômica</div>
+      <p class="hero-sub">A Torre A está <strong style="color:var(--accent2)">100% entregue</strong> e habitada. A Torre B entra em entrega em breve — e ainda dá tempo de comprar e garantir o seu antes que acabe.</p>
+      <div style="display:flex;gap:16px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:12px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.35);border-radius:14px;padding:14px 22px;">
+          <span style="font-size:22px;color:#4ade80;line-height:1;">✓</span>
+          <div style="text-align:left;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#4ade80;margin-bottom:2px;">Torre A</div>
+            <div style="font-size:16px;font-weight:700;color:#fff;">100% entregue</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:rgba(232,101,10,0.10);border:1px solid rgba(232,101,10,0.45);border-radius:14px;padding:14px 22px;">
+          <span style="font-size:22px;color:var(--accent);line-height:1;">→</span>
+          <div style="text-align:left;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:2px;">Torre B</div>
+            <div style="font-size:16px;font-weight:700;color:#fff;">Ainda dá tempo de comprar</div>
+          </div>
+        </div>
       </div>
       <div class="hero-ctas">
         <a class="btn-primary" href="https://wa.me/5535910202948?text=Quero%20agendar%20uma%20visita%20ao%20São%20José%20Condomínio%20Clube." target="_blank">
-          Agendar visita ao stand →
-        </a>
-        <a class="btn-ghost" href="https://wa.me/5535910202948" target="_blank">
-          Falar agora no WhatsApp
+          Falar agora no WhatsApp →
         </a>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-img-wrap">
-        <img src="https://saojosecondominioclube.com.br/wp-content/uploads/elementor/thumbs/02-FACHADA-qvk37c066y060ccz648wkut1ak1704m9rpp8zdhagg.jpg" alt="São José Condomínio Clube Fachada">
-        <div class="hero-img-overlay"></div>
-      </div>
-      <div class="hero-stat-card">
-        <div class="hero-stat-num">15</div>
-        <div class="hero-stat-label">unidades disponíveis<br>Torre B</div>
-      </div>
-      <div class="hero-stat-card2">
-        <span><span class="live-dot"></span>Torre A habitada</span>
-      </div>
-    </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-  02. DOR
+  02. PORQUE É DIFERENTE
 ══════════════════════════════════════ -->
-<section id="dor">
+<section id="diferente">
   <div class="container">
-    <div class="section-kicker">Você se reconhece aqui?</div>
-    <h2 class="section-title">Você merece mais do que<br>tem <span class="accent">hoje</span></h2>
-    <div class="dor-grid">
-      <div class="dor-card">
-        <div class="dor-icon">🏠</div>
-        <p>"Todo mês você paga o imóvel <span class="accent">de outra pessoa</span>"</p>
-        <small>O aluguel sobe todo ano. O imóvel nunca é seu. Chegou a hora de mudar isso.</small>
-      </div>
-      <div class="dor-card">
-        <div class="dor-icon">🏊</div>
-        <p>"Você tem um imóvel. Mas não tem clube, lazer, <span class="accent">nem espaço</span>"</p>
-        <small>Finais de semana em casa sem nada pra fazer. As crianças pedindo lazer fora. Isso tem solução.</small>
-      </div>
-      <div class="dor-card">
-        <div class="dor-icon">📈</div>
-        <p>"Seu dinheiro parado não vira herança. <span class="accent">Imóvel vira</span>"</p>
-        <small>Poupança perde para inflação. Imóvel bem localizado valoriza e ainda gera renda.</small>
-      </div>
+    <div class="section-kicker">Porque ele é diferente?</div>
+    <h2 class="section-title">Não é apartamento com piscina. É <span class="accent">clube com apartamento</span></h2>
+    <div class="solucao-bullets" style="margin-top:32px;max-width:700px;margin-left:auto;margin-right:auto;">
+      <div class="solucao-bullet"><div class="check">✓</div> Único condomínio clube de Paraíso em entrega imediata</div>
+      <div class="solucao-bullet"><div class="check">✓</div> Torre A entregue · Torre B com chaves em breve</div>
+      <div class="solucao-bullet"><div class="check">✓</div> Lazer 100% pronto — você já usa no primeiro dia</div>
+      <div class="solucao-bullet"><div class="check">✓</div> 2 torres · 15 andares · 4 apartamentos por andar</div>
+      <div class="solucao-bullet"><div class="check">✓</div> 2 elevadores por torre · 2 pavimentos de garagem</div>
+      <div class="solucao-bullet"><div class="check">✓</div> Financiamento Caixa Econômica Federal · FGTS aceito</div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-  03. AGITAÇÃO
-══════════════════════════════════════ -->
-<section id="agitacao">
-  <div class="container">
-    <div class="agit-inner">
-      <div>
-        <div class="section-kicker">O custo de esperar</div>
-        <h2 class="section-title">Quem esperou na Torre A <span class="accent">ficou de fora</span></h2>
-        <div class="agit-points">
-          <div class="agit-point">
-            <div class="agit-num">15</div>
-            <p>unidades restantes na Torre B. <strong>Dado real, não retórica.</strong></p>
-          </div>
-          <div class="agit-point">
-            <div class="agit-num">✓</div>
-            <p>Torre A está <strong>entregue e habitada</strong> — a fila passou.</p>
-          </div>
-          <div class="agit-point">
-            <div class="agit-num">→</div>
-            <p>Preço de lançamento <strong>não existe mais</strong> — mas entrega é agora.</p>
-          </div>
-          <div class="agit-point">
-            <div class="agit-num">↑</div>
-            <p>Quem comprou na planta já valorizou. <strong>Você ainda pode entrar.</strong></p>
-          </div>
-        </div>
-      </div>
-      <div class="agit-visual">
-        <div class="agit-img">
-          <img src="https://saojosecondominioclube.com.br/wp-content/uploads/2024/10/foto-aerea.png" alt="Vista aérea São José">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-  04. SOLUÇÃO
-══════════════════════════════════════ -->
-<section id="solucao">
-  <div class="container">
-    <div class="solucao-inner">
-      <div class="solucao-img">
-        <img src="https://saojosecondominioclube.com.br/wp-content/uploads/elementor/thumbs/01-PISCINA-qvk37dvukm2qnka8v525pubyhbrxfitqfz07xxei40.jpg" alt="Piscina São José">
-      </div>
-      <div>
-        <div class="section-kicker">A solução</div>
-        <h2 class="section-title">Não é apartamento com piscina. É <span class="accent">clube com apartamento</span></h2>
-        <div class="solucao-bullets">
-          <div class="solucao-bullet"><div class="check">✓</div> Único condomínio clube de Paraíso em entrega imediata</div>
-          <div class="solucao-bullet"><div class="check">✓</div> Torre A entregue · Torre B com chaves no próximo mês</div>
-          <div class="solucao-bullet"><div class="check">✓</div> Lazer 100% pronto — você já usa no primeiro dia</div>
-          <div class="solucao-bullet"><div class="check">✓</div> 2 torres · 15 andares · 4 apartamentos por andar</div>
-          <div class="solucao-bullet"><div class="check">✓</div> 2 elevadores por torre · 2 pavimentos de garagem</div>
-          <div class="solucao-bullet"><div class="check">✓</div> Financiamento Caixa Econômica Federal · FGTS aceito</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-  05. LAZER
+  03. LAZER
 ══════════════════════════════════════ -->
 <section id="lazer">
   <div class="container">
@@ -768,127 +663,28 @@
       </div>
     </div>
     <div class="lazer-cta">
-      <a class="btn-ghost" href="https://tour360.meupasseiovirtual.com/023490/109122/sao-jose-condominio-clube/tourvirtual/" target="_blank">
-        🎯 Ver tour virtual 360° completo
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-  06. PLANTAS
-══════════════════════════════════════ -->
-<section id="plantas">
-  <div class="container">
-    <div class="section-kicker">As plantas</div>
-    <h2 class="section-title">Espaço pensado para <span class="accent">como você vive</span></h2>
-    <div class="plantas-grid">
-      <div class="planta-card">
-        <div class="planta-img">
-          <img src="https://saojosecondominioclube.com.br/wp-content/uploads/2024/10/planta-1.png" alt="Planta Smart 54m²">
-        </div>
-        <div class="planta-body">
-          <div class="planta-tag">Disponível</div>
-          <div class="planta-name">Smart</div>
-          <div class="planta-area">54m² <span>área privativa</span></div>
-          <div class="planta-features">
-            <div class="planta-feature">2 quartos</div>
-            <div class="planta-feature">Copa com sala integrada</div>
-            <div class="planta-feature">Cozinha com lavanderia</div>
-            <div class="planta-feature">Banheiro social</div>
-            <div class="planta-feature">Sacada</div>
-            <div class="planta-feature">Infra para ar condicionado</div>
-          </div>
-          <div class="planta-desc">Para casais começando ou famílias que querem praticidade no dia a dia</div>
-          <br>
-          <a class="btn-primary" href="https://wa.me/5535910202948?text=Quero%20saber%20sobre%20o%20apartamento%20Smart%2054m²" target="_blank" style="font-size:14px;padding:12px 24px;">
-            Verificar disponibilidade →
-          </a>
-        </div>
+      <div style="margin-top:50px;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:0 24px 60px rgba(0,0,0,0.5);">
+        <iframe
+          src="https://tour360.meupasseiovirtual.com/023490/109122/sao-jose-condominio-clube/tourvirtual/"
+          width="100%"
+          height="520"
+          frameborder="0"
+          allowfullscreen
+          loading="lazy"
+          style="display:block;">
+        </iframe>
       </div>
-      <div class="planta-card">
-        <div class="planta-img">
-          <img src="https://saojosecondominioclube.com.br/wp-content/uploads/2024/10/Planta-2.png" alt="Planta Garden 76m²">
-        </div>
-        <div class="planta-body">
-          <div class="planta-tag">Consulte disponibilidade</div>
-          <div class="planta-name">Garden</div>
-          <div class="planta-area">76m² <span>área privativa</span></div>
-          <div class="planta-features">
-            <div class="planta-feature">2 quartos</div>
-            <div class="planta-feature">Sala ampliada</div>
-            <div class="planta-feature">Área externa privativa</div>
-            <div class="planta-feature">Churrasqueira</div>
-            <div class="planta-feature">Sacada panorâmica</div>
-            <div class="planta-feature">Infra para ar condicionado</div>
-          </div>
-          <div class="planta-desc">Para quem quer jardim e churrasco sem sair do condomínio</div>
-          <br>
-          <a class="btn-primary" href="https://wa.me/5535910202948?text=Quero%20saber%20sobre%20o%20apartamento%20Garden%2076m²" target="_blank" style="font-size:14px;padding:12px 24px;">
-            Verificar disponibilidade →
-          </a>
-        </div>
+      <div style="margin-top:20px;">
+        <a class="btn-ghost" href="https://tour360.meupasseiovirtual.com/023490/109122/sao-jose-condominio-clube/tourvirtual/" target="_blank">
+          Abrir em tela cheia →
+        </a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-  07. PREÇO
-══════════════════════════════════════ -->
-<section id="preco">
-  <div class="container">
-    <div class="section-kicker">Investimento</div>
-    <h2 class="section-title">Quanto custa morar<br>no <span class="accent">São José</span>?</h2>
-    <div class="preco-inner" style="margin-top:50px;">
-      <div>
-        <div class="preco-card featured">
-          <div class="preco-tipo">Smart · 54m²</div>
-          <div class="preco-valor">R$ 350.000</div>
-          <div class="preco-parcela">Parcelas a partir de R$ 1.890/mês</div>
-          <div class="preco-itens">
-            <div class="preco-item"><div class="dot"></div> Aceita FGTS como entrada</div>
-            <div class="preco-item"><div class="dot"></div> Financiamento Caixa Econômica Federal</div>
-            <div class="preco-item"><div class="dot"></div> Programa MCMV e SBPE</div>
-            <div class="preco-item"><div class="dot"></div> Bancos parceiros</div>
-            <div class="preco-item"><div class="dot"></div> Simulação personalizada no stand</div>
-          </div>
-          <a class="btn-primary" href="https://wa.me/5535910202948?text=Quero%20simular%20meu%20financiamento%20no%20São%20José" target="_blank">
-            Quero simular meu financiamento →
-          </a>
-        </div>
-        <div class="preco-card" style="margin-top:20px;">
-          <div class="preco-tipo">Garden · 76m²</div>
-          <div class="preco-valor">Até R$ 420.000</div>
-          <div class="preco-parcela">Consulte condições especiais</div>
-          <a class="btn-ghost" href="https://wa.me/5535910202948?text=Quero%20saber%20o%20preço%20do%20Garden" target="_blank" style="margin-top:8px;">
-            Consultar →
-          </a>
-        </div>
-      </div>
-      <div>
-        <div class="preco-obs">
-          <p style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:16px;">Nosso time cuida de tudo para você</p>
-          <p>Na visita ao stand, nossa equipe faz a simulação completa: valor de entrada com FGTS, parcelas pelo MCMV ou SBPE, e o melhor plano para o seu perfil. <br><br><strong>Sem compromisso. Sem pressão.</strong> Só informação clara para você decidir com segurança.</p>
-        </div>
-        <br>
-        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;margin-top:0;">
-          <p style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Formas de pagamento</p>
-          <div style="display:flex;flex-wrap:wrap;gap:10px;">
-            <span style="background:rgba(232,101,10,0.1);border:1px solid rgba(232,101,10,0.2);color:var(--text-muted);padding:6px 14px;border-radius:50px;font-size:13px;">FGTS</span>
-            <span style="background:rgba(232,101,10,0.1);border:1px solid rgba(232,101,10,0.2);color:var(--text-muted);padding:6px 14px;border-radius:50px;font-size:13px;">MCMV</span>
-            <span style="background:rgba(232,101,10,0.1);border:1px solid rgba(232,101,10,0.2);color:var(--text-muted);padding:6px 14px;border-radius:50px;font-size:13px;">SBPE</span>
-            <span style="background:rgba(232,101,10,0.1);border:1px solid rgba(232,101,10,0.2);color:var(--text-muted);padding:6px 14px;border-radius:50px;font-size:13px;">Caixa Econômica</span>
-            <span style="background:rgba(232,101,10,0.1);border:1px solid rgba(232,101,10,0.2);color:var(--text-muted);padding:6px 14px;border-radius:50px;font-size:13px;">Bancos parceiros</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-  08. LOCALIZAÇÃO
+  04. LOCALIZAÇÃO
 ══════════════════════════════════════ -->
 <section id="localizacao">
   <div class="container">
@@ -940,9 +736,166 @@
 </section>
 
 <!-- ══════════════════════════════════════
-  09. FAQ
+  05. PLANTAS
 ══════════════════════════════════════ -->
-<section id="faq">
+<section id="plantas">
+  <div class="container">
+    <div class="section-kicker">As plantas</div>
+    <h2 class="section-title">Espaço pensado para <span class="accent">como você vive</span></h2>
+    <div class="plantas-grid">
+      <div class="planta-card">
+        <div class="planta-img">
+          <img src="https://saojosecondominioclube.com.br/wp-content/uploads/2024/10/planta-1.png" alt="Planta Smart 54m²">
+        </div>
+        <div class="planta-body">
+          <div class="planta-tag">Disponível</div>
+          <div class="planta-name">Smart</div>
+          <div class="planta-area">54m² <span>área privativa</span></div>
+          <div class="planta-features">
+            <div class="planta-feature">2 quartos</div>
+            <div class="planta-feature">Copa com sala integrada</div>
+            <div class="planta-feature">Cozinha com lavanderia</div>
+            <div class="planta-feature">Banheiro social</div>
+            <div class="planta-feature">Sacada</div>
+            <div class="planta-feature">Infra para ar condicionado</div>
+          </div>
+          <div class="planta-desc">Para casais começando ou famílias que querem praticidade no dia a dia</div>
+          <br>
+          <div style="text-align:center;">
+            <a class="btn-primary" href="https://wa.me/5535910202948?text=Quero%20saber%20sobre%20o%20apartamento%20Smart%2054m²" target="_blank" style="font-size:14px;padding:12px 24px;">
+              Verificar disponibilidade →
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="planta-card">
+        <div class="planta-img">
+          <img src="https://saojosecondominioclube.com.br/wp-content/uploads/2024/10/Planta-2.png" alt="Planta Garden 76m²">
+        </div>
+        <div class="planta-body">
+          <div class="planta-tag">Consulte disponibilidade</div>
+          <div class="planta-name">Garden</div>
+          <div class="planta-area">76m² <span>área privativa</span></div>
+          <div class="planta-features">
+            <div class="planta-feature">2 quartos</div>
+            <div class="planta-feature">Sala ampliada</div>
+            <div class="planta-feature">Área externa privativa</div>
+            <div class="planta-feature">Churrasqueira</div>
+            <div class="planta-feature">Sacada panorâmica</div>
+            <div class="planta-feature">Infra para ar condicionado</div>
+          </div>
+          <div class="planta-desc">Para quem quer jardim e churrasco sem sair do condomínio</div>
+          <br>
+          <div style="text-align:center;">
+            <a class="btn-primary" href="https://wa.me/5535910202948?text=Quero%20saber%20sobre%20o%20apartamento%20Garden%2076m²" target="_blank" style="font-size:14px;padding:12px 24px;">
+              Verificar disponibilidade →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  06. FEITO PARA VOCÊ
+══════════════════════════════════════ -->
+<section id="perfis" style="background:var(--bg3);">
+  <div class="container">
+    <div class="section-kicker">Feito para você</div>
+    <h2 class="section-title">Ele tem tudo que <span class="accent">você procura</span></h2>
+    <div class="dor-grid" style="margin-top:48px;">
+      <div class="dor-card">
+        <div style="font-size:36px;margin-bottom:20px;">📈</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Quem pensa em patrimônio</div>
+        <p style="font-size:20px;font-weight:700;font-family:'Playfair Display',serif;line-height:1.35;color:var(--text);">
+          "Seu dinheiro parado não vira herança. <span class="accent">Imóvel vira"</span>
+        </p>
+        <small style="display:block;margin-top:14px;font-size:14px;color:var(--text-muted);line-height:1.7;">
+          Poupança perde para a inflação. Imóvel bem localizado valoriza e ainda gera renda. Com a Zella, você coloca para trabalhar no Airbnb ou locação sem precisar gerenciar nada.
+        </small>
+      </div>
+      <div class="dor-card">
+        <div style="font-size:36px;margin-bottom:20px;">🏊</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Quem quer upgrade de vida</div>
+        <p style="font-size:20px;font-weight:700;font-family:'Playfair Display',serif;line-height:1.35;color:var(--text);">
+          "Você tem um imóvel. Mas não tem clube, lazer, <span class="accent">nem espaço"</span>
+        </p>
+        <small style="display:block;margin-top:14px;font-size:14px;color:var(--text-muted);line-height:1.7;">
+          Final de semana sem ter pra onde ir com a família. No São José, piscina, academia, gourmet e playground estão no mesmo endereço que você dorme.
+        </small>
+      </div>
+      <div class="dor-card">
+        <div style="font-size:36px;margin-bottom:20px;">🏠</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Quem quer o primeiro imóvel</div>
+        <p style="font-size:20px;font-weight:700;font-family:'Playfair Display',serif;line-height:1.35;color:var(--text);">
+          "Todo mês você paga o imóvel <span class="accent">de outra pessoa"</span>
+        </p>
+        <small style="display:block;margin-top:14px;font-size:14px;color:var(--text-muted);line-height:1.7;">
+          O aluguel sobe todo ano. O imóvel nunca é seu. No São José, a parcela mensal pode ser menor do que o que você paga hoje — e o apartamento passa a ser seu.
+        </small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+  07. PREÇO
+══════════════════════════════════════ -->
+<section id="preco">
+  <div class="container">
+    <div class="section-kicker">Investimento</div>
+    <h2 class="section-title">Quanto custa morar<br>no <span class="accent">São José</span>?</h2>
+    <div class="preco-inner" style="margin-top:50px;">
+      <div>
+        <div class="preco-card featured">
+          <div class="preco-tipo">Smart · 54m²</div>
+          <div class="preco-valor">R$ 350.000</div>
+          <div class="preco-parcela">Parcelas a partir de R$ 1.890/mês</div>
+          <div class="preco-itens">
+            <div class="preco-item"><div class="dot"></div> Aceita FGTS como entrada</div>
+            <div class="preco-item"><div class="dot"></div> Financiamento Caixa Econômica Federal</div>
+            <div class="preco-item"><div class="dot"></div> Programa MCMV e SBPE</div>
+            <div class="preco-item"><div class="dot"></div> Bancos parceiros</div>
+            <div class="preco-item"><div class="dot"></div> Simulação personalizada no stand</div>
+          </div>
+          <a class="btn-primary" href="https://wa.me/5535910202948?text=Quero%20simular%20meu%20financiamento%20no%20São%20José" target="_blank">
+            Quero simular meu financiamento →
+          </a>
+        </div>
+        <div class="preco-card" style="margin-top:20px;">
+          <div class="preco-tipo">Garden · 76m²</div>
+          <div class="preco-valor">Até R$ 420.000</div>
+          <div class="preco-parcela">Consulte condições especiais</div>
+          <a class="btn-ghost" href="https://wa.me/5535910202948?text=Quero%20saber%20o%20preço%20do%20Garden" target="_blank" style="margin-top:8px;">
+            Consultar →
+          </a>
+        </div>
+      </div>
+      <div>
+        <div class="preco-obs">
+          <p style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">Condições especiais e com entrada facilitada</p>
+          <p style="font-size:16px;font-weight:600;color:var(--text);margin-bottom:16px;">Nosso time cuida de tudo para você</p>
+          <p>Na visita ao stand, nossa equipe faz a simulação completa: valor de entrada com FGTS, parcelas pelo MCMV ou SBPE, e o melhor plano para o seu perfil. <br><br><strong>Sem compromisso. Sem pressão.</strong> Só informação clara para você decidir com segurança.</p>
+        </div>
+        <br>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;">
+          <p style="font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;">Formas de pagamento</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;">
+            <span style="background:rgba(232,101,10,0.1);border:1px solid rgba(232,101,10,0.2);color:var(--text-muted);padding:6px 14px;border-radius:50px;font-size:13px;">FGTS</span>
+            <span style="background:rgba(232,101,10,0.1);border:1px solid rgba(232,101,10,0.2);color:var(--text-muted);padding:6px 14px;border-radius:50px;font-size:13px;">MCMV</span>
+            <span style="background:rgba(232,101,10,0.1);border:1px solid rgba(232,101,10,0.2);color:var(--text-muted);padding:6px 14px;border-radius:50px;font-size:13px;">SBPE</span>
+            <span style="background:rgba(232,101,10,0.1);border:1px solid rgba(232,101,10,0.2);color:var(--text-muted);padding:6px 14px;border-radius:50px;font-size:13px;">Caixa Econômica</span>
+            <span style="background:rgba(232,101,10,0.1);border:1px solid rgba(232,101,10,0.2);color:var(--text-muted);padding:6px 14px;border-radius:50px;font-size:13px;">Bancos parceiros</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (oculto) -->
+<section id="faq" style="display:none;">
   <div class="container">
     <div class="section-kicker">Dúvidas frequentes</div>
     <h2 class="section-title">Perguntas que todo mundo <span class="accent">faz</span></h2>
@@ -992,7 +945,7 @@
 </section>
 
 <!-- ══════════════════════════════════════
-  10. AUTORIDADE
+  08. AUTORIDADE
 ══════════════════════════════════════ -->
 <section id="autoridade">
   <div class="container">
@@ -1055,17 +1008,17 @@
 </section>
 
 <!-- ══════════════════════════════════════
-  11. URGÊNCIA
+  09. URGÊNCIA
 ══════════════════════════════════════ -->
 <section id="urgencia">
   <div class="container">
     <div class="section-kicker">Decisão</div>
-    <div class="urgencia-num">15</div>
-    <h2 style="font-size:clamp(24px,3.5vw,38px);margin-bottom:16px;">apartamentos. A Torre A já está habitada.</h2>
+    <p style="font-size:20px;color:var(--text-muted);margin-bottom:8px;">Ainda restam unidades na Torre B</p>
+    <h2 class="section-title">Quem comprou no lançamento <span class="accent">já está em casa</span></h2>
     <p class="urgencia-sub">Cada semana que passa é uma unidade a menos. E o próximo empreendimento começa do zero.</p>
     <div class="urgencia-points">
       <div class="urgencia-point">Quem comprou no lançamento já está em casa</div>
-      <div class="urgencia-point">Quem comprar agora pega chave no próximo mês</div>
+      <div class="urgencia-point">Quem comprar agora pega chave em breve</div>
       <div class="urgencia-point">Quem esperar — pega o próximo empreendimento</div>
     </div>
     <a class="btn-primary" href="https://wa.me/5535910202948?text=Quero%20garantir%20meu%20apartamento%20no%20São%20José%20Condomínio%20Clube" target="_blank" style="font-size:17px;padding:18px 40px;">
@@ -1075,13 +1028,13 @@
 </section>
 
 <!-- ══════════════════════════════════════
-  12. CTA FINAL
+  10. CTA FINAL
 ══════════════════════════════════════ -->
 <section id="cta-final">
   <div class="container">
     <div class="cta-inner">
       <div class="form-card">
-        <h3 class="form-title">Um desses <span class="accent">15</span> pode ser seu</h3>
+        <h3 class="form-title">Fale com um <span class="accent">consultor</span></h3>
         <p class="form-sub">Preencha e nosso time entra em contato hoje</p>
         <form onsubmit="submitForm(event)">
           <div class="form-group">
