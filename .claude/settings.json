@@ -1,14 +1,5 @@
 {
   "permissions": {
-    "defaultMode": "acceptEdits",
-    "allow": [
-      "Edit",
-      "Write",
-      "Read",
-      "Bash(git *)",
-      "PowerShell(git *)",
-      "PowerShell(Get-ChildItem *)",
-      "PowerShell(New-Item *)"
-    ]
+    "defaultMode": "bypassPermissions"
   }
 }
