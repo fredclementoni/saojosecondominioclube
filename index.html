@@ -8,17 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:        #080d14;
-    --bg2:       #0c1420;
-    --bg3:       #101c2c;
-    --surface:   #0f1c2e;
-    --surface2:  #152035;
-    --border:    #1e3050;
+    --bg:        #1a1930;
+    --bg2:       #252440;
+    --bg3:       #2d2b52;
+    --surface:   #201f3d;
+    --surface2:  #2a2848;
+    --border:    #3d3b65;
     --accent:    #E8650A;
     --accent2:   #ff8c3a;
     --text:      #e8edf5;
-    --text-muted:#7a93b0;
-    --text-dim:  #4a6480;
+    --text-muted:#9896c8;
+    --text-dim:  #5e5c8a;
     --white:     #ffffff;
     --radius:    16px;
     --radius-sm: 10px;
@@ -124,13 +124,15 @@
     position: relative;
     overflow: hidden;
     padding: 0 24px;
-    background: #252440;
+    background-image: url('https://saojosecondominioclube.com.br/wp-content/uploads/elementor/thumbs/01-PISCINA-qvk37dvukm2qnka8v525pubyhbrxfitqfz07xxei40.jpg');
+    background-size: cover;
+    background-position: center;
   }
 
   #hero::before {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(110deg, rgba(5,12,24,0.97) 0%, rgba(8,18,38,0.88) 50%, rgba(10,22,50,0.70) 100%);
+    background: linear-gradient(110deg, rgba(26,25,48,0.97) 0%, rgba(37,36,64,0.90) 50%, rgba(45,43,82,0.72) 100%);
     pointer-events: none;
   }
 
@@ -187,7 +189,7 @@
   .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
 
   /* ─── DOR ─── */
-  #dor { background: var(--bg2); }
+  #dor { background: var(--bg3); }
   .dor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 50px; }
   .dor-card {
     background: var(--surface);
@@ -209,7 +211,7 @@
 
   /* ─── AGITAÇÃO ─── */
   #agitacao {
-    background: linear-gradient(160deg, var(--bg) 0%, var(--bg3) 100%);
+    background: linear-gradient(160deg, var(--bg2) 0%, var(--bg) 100%);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
@@ -239,7 +241,7 @@
   .agit-img img { width:100%; height:420px; object-fit:cover; display:block; }
 
   /* ─── SOLUÇÃO ─── */
-  #solucao { background: var(--bg2); }
+  #solucao { background: var(--bg); }
   .solucao-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
   .solucao-bullets { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
   .solucao-bullet {
@@ -258,7 +260,7 @@
   .solucao-img img { width:100%; height:460px; object-fit:cover; display:block; }
 
   /* ─── LAZER ─── */
-  #lazer { background: var(--bg); }
+  #lazer { background: var(--bg2); }
   .lazer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 50px; }
   .lazer-card {
     position: relative; border-radius: var(--radius); overflow: hidden;
@@ -278,7 +280,7 @@
   .lazer-cta { text-align: center; margin-top: 40px; }
 
   /* ─── PLANTAS ─── */
-  #plantas { background: var(--bg2); }
+  #plantas { background: var(--bg); }
   .plantas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 50px; }
   .planta-card {
     background: var(--surface);
@@ -310,7 +312,7 @@
 
   /* ─── PREÇO ─── */
   #preco {
-    background: linear-gradient(160deg, var(--bg3) 0%, var(--bg) 100%);
+    background: linear-gradient(160deg, var(--bg2) 0%, var(--bg3) 100%);
     border-top: 1px solid var(--border);
   }
   .preco-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
@@ -344,7 +346,7 @@
   .preco-obs strong { color: var(--text); }
 
   /* ─── LOCALIZAÇÃO ─── */
-  #localizacao { background: var(--bg2); }
+  #localizacao { background: var(--bg); }
   .loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; margin-top: 50px; }
   .loc-map {
     border-radius: var(--radius-lg); overflow: hidden;
@@ -360,7 +362,7 @@
   .loc-item .loc-dist { color: var(--accent); font-weight: 600; font-size: 13px; }
 
   /* ─── FAQ ─── */
-  #faq { background: var(--bg); }
+  #faq { background: var(--bg3); }
   .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 50px; max-width: 780px; }
   .faq-item {
     background: var(--surface);
@@ -384,7 +386,7 @@
   .faq-cta { margin-top: 32px; text-align: center; }
 
   /* ─── AUTORIDADE ─── */
-  #autoridade { background: var(--bg2); }
+  #autoridade { background: var(--bg2); /* #252440 */ }
   .aut-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-top: 50px; }
   .aut-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
   .aut-num-card {
@@ -447,7 +449,7 @@
 
   /* ─── URGÊNCIA ─── */
   #urgencia {
-    background: linear-gradient(160deg, var(--bg3) 0%, #0d1525 100%);
+    background: linear-gradient(160deg, var(--bg) 0%, var(--bg2) 100%);
     border-top: 1px solid var(--border);
     text-align: center;
   }
@@ -464,7 +466,7 @@
   .urgencia-point::before { content: '→'; color: var(--accent); }
 
   /* ─── CTA FINAL ─── */
-  #cta-final { background: var(--bg2); }
+  #cta-final { background: var(--bg3); }
   .cta-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
   .form-card {
     background: var(--surface);
@@ -517,7 +519,7 @@
 
   /* ─── FOOTER ─── */
   footer {
-    background: var(--bg);
+    background: #13122a;
     border-top: 1px solid var(--border);
     padding: 40px 24px;
     text-align: center;
@@ -798,7 +800,7 @@
 <!-- ══════════════════════════════════════
   06. FEITO PARA VOCÊ
 ══════════════════════════════════════ -->
-<section id="perfis" style="background:var(--bg3);">
+<section id="perfis" style="background:var(--bg2);">
   <div class="container">
     <div class="section-kicker">Feito para você</div>
     <h2 class="section-title">Ele tem tudo que <span class="accent">você procura</span></h2>
