@@ -143,18 +143,30 @@ nav {
   background:var(--card); border:1px solid var(--border); border-radius:20px;
   padding:48px 36px; text-align:center;
   transition:transform .3s, box-shadow .3s;
+  position:relative; overflow:hidden;
 }
 .pilar-card:hover { transform:translateY(-6px); box-shadow:var(--sh-el); }
+.pilar-card-video {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; z-index:0;
+  pointer-events:none;
+}
+.pilar-card-overlay {
+  position:absolute; inset:0; z-index:1;
+  background:rgba(250,248,243,.88);
+}
 .pilar-icon {
   width:64px; height:64px; border-radius:16px;
   background:var(--muted); display:flex; align-items:center; justify-content:center;
   margin:0 auto 24px; font-size:28px;
+  position:relative; z-index:2;
 }
 .pilar-title {
   font-family:'Playfair Display',serif;
   font-size:1.35rem; font-weight:700; margin-bottom:12px;
+  position:relative; z-index:2;
 }
-.pilar-text { font-size:.95rem; color:var(--muted-fg); line-height:1.7; }
+.pilar-text { font-size:.95rem; color:var(--muted-fg); line-height:1.7; position:relative; z-index:2; }
 
 /* ── ROTINA ── */
 #rotina { padding:100px 0; background:var(--charcoal); color:#fff; }
@@ -187,15 +199,29 @@ nav {
   font-size:clamp(2rem,3.5vw,3rem); font-weight:700; line-height:1.2;
   margin-top:12px; max-width:560px;
 }
+.loc-cards-main { display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:16px; }
+@media(min-width:768px){ .loc-cards-main{grid-template-columns:repeat(3,1fr);} }
+.loc-card {
+  background:var(--card); border:1px solid var(--border); border-radius:16px;
+  padding:24px; display:flex; align-items:stretch; gap:0;
+}
+.loc-card-question {
+  font-family:'Playfair Display',serif;
+  font-size:1.05rem; font-weight:700; line-height:1.3;
+  color:var(--fg); flex:0 0 auto; max-width:110px;
+  display:flex; align-items:center;
+}
+.loc-card-divider {
+  width:1px; background:var(--border); flex-shrink:0; margin:0 20px;
+}
 .loc-blocks { display:grid; grid-template-columns:1fr; gap:16px; margin-bottom:48px; }
 @media(min-width:640px){ .loc-blocks{grid-template-columns:repeat(2,1fr);} }
-@media(min-width:1024px){ .loc-blocks{grid-template-columns:repeat(5,1fr);} }
 .loc-block {
   background:var(--card); border:1px solid var(--border); border-radius:16px;
   padding:24px 20px;
 }
 .loc-block-label { font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--bronze); margin-bottom:14px; }
-.loc-items { display:flex; flex-direction:column; gap:7px; }
+.loc-items { display:flex; flex-direction:column; gap:7px; justify-content:center; }
 .loc-item { font-size:.88rem; color:var(--muted-fg); display:flex; align-items:baseline; gap:6px; }
 .loc-item strong { color:var(--fg); font-weight:500; }
 .loc-map {
@@ -239,13 +265,13 @@ nav {
 .planta-img-wrap {
   position:relative; border-radius:20px; overflow:hidden;
   flex:0 0 auto; width:100%;
+  background:var(--muted);
+  display:flex; align-items:center; justify-content:center;
+  min-height:300px;
 }
 @media(min-width:768px){ .planta-img-wrap{width:48%;} }
 .planta-img-wrap img { width:100%; display:block; }
-.planta-img-wrap::after {
-  content:''; position:absolute; bottom:0; left:0; right:0; height:56px;
-  background:rgba(20,18,36,.95);
-}
+
 .planta-info { padding:32px 0; }
 @media(min-width:768px){ .planta-info{padding:0;} }
 .planta-tag { display:inline-block; padding:5px 14px; border-radius:99px; background:var(--muted); font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--bronze); margin-bottom:16px; }
@@ -303,8 +329,10 @@ nav {
 .cond-card-title { font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; margin-bottom:12px; }
 .cond-card-desc { font-size:.92rem; color:var(--muted-fg); line-height:1.65; margin-bottom:24px; }
 .cond-card ul { list-style:none; display:flex; flex-direction:column; gap:9px; margin-bottom:28px; }
-.cond-card ul li { font-size:.88rem; color:var(--muted-fg); display:flex; gap:8px; }
-.cond-card ul li::before { content:'→'; color:var(--bronze); flex-shrink:0; }
+.cond-card ul li { font-size:.88rem; color:var(--muted-fg); display:flex; align-items:center; gap:8px; }
+
+/* ── LUCIDE ICONS ── */
+i[data-lucide] { display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
 .cond-card-cta {
   display:inline-flex; align-items:center; gap:8px;
   padding:12px 24px; border-radius:9999px;
@@ -466,6 +494,7 @@ nav {
 .wa-float svg { width:28px; height:28px; fill:#fff; }
 
 </style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
@@ -508,17 +537,29 @@ nav {
     </div>
     <div class="pilares-grid">
       <div class="pilar-card">
-        <div class="pilar-icon">&#127948;</div>
+        <video class="pilar-card-video" autoplay loop muted playsinline>
+          <source src="assets/video-piscina.mp4" type="video/mp4">
+        </video>
+        <div class="pilar-card-overlay"></div>
+        <div class="pilar-icon"><i data-lucide="waves" style="width:28px;height:28px;color:var(--bronze)"></i></div>
         <h3 class="pilar-title serif">Clube dentro de casa</h3>
         <p class="pilar-text">Piscina com hidromassagem, academia completa, sauna, salão de festas e espaço gourmet.</p>
       </div>
       <div class="pilar-card">
-        <div class="pilar-icon">&#128205;</div>
+        <video class="pilar-card-video" autoplay loop muted playsinline>
+          <source src="assets/video-mercado.mp4" type="video/mp4">
+        </video>
+        <div class="pilar-card-overlay"></div>
+        <div class="pilar-icon"><i data-lucide="map-pin" style="width:28px;height:28px;color:var(--bronze)"></i></div>
         <h3 class="pilar-title serif">Perto de tudo</h3>
         <p class="pilar-text">Próximo da maior avenida da cidade. Supermercados, escolas, UPA, farmácias e tudo que importa a poucos passos.</p>
       </div>
       <div class="pilar-card">
-        <div class="pilar-icon">&#127774;</div>
+        <video class="pilar-card-video" autoplay loop muted playsinline>
+          <source src="assets/video-por-do-sol.mp4" type="video/mp4">
+        </video>
+        <div class="pilar-card-overlay"></div>
+        <div class="pilar-icon"><i data-lucide="sun" style="width:28px;height:28px;color:var(--bronze)"></i></div>
         <h3 class="pilar-title serif">Vista espetacular</h3>
         <p class="pilar-text">Apartamentos com visão para os montes e o pôr do sol magífico. Uma paisagem única que não encontra em outro lugar.</p>
       </div>
@@ -540,7 +581,7 @@ nav {
         </div>
         <div class="rotina-body">
           <div class="rotina-time">De manhã</div>
-          <h3 class="rotina-h3 serif">Piscina e sauna</h3>
+          <h3 class="rotina-h3 serif">Academia e Sauna</h3>
           <p class="rotina-p">Você acorda, toma seu café da manhã fit, desce pra academia e depois uma sessão de sauna antes de começar o dia.</p>
         </div>
       </div>
@@ -550,7 +591,7 @@ nav {
         </div>
         <div class="rotina-body">
           <div class="rotina-time">Fim de semana</div>
-          <h3 class="rotina-h3 serif">Piscina e churrasco</h3>
+          <h3 class="rotina-h3 serif">Piscina e Churrasco</h3>
           <p class="rotina-p">Aquele domingo que nem precisa sair de casa. Chama os amigos e familiares para curtir uma piscinna e um churrasco divertido e descontraído.</p>
         </div>
       </div>
@@ -575,45 +616,50 @@ nav {
       <span class="eyebrow">Localização</span>
       <h2 class="serif">Perto de tudo que<br>você precisa.</h2>
     </div>
-    <div class="loc-blocks">
-      <div class="loc-block">
-        <div class="loc-block-label">Trabalho</div>
+    <div class="loc-cards-main">
+      <div class="loc-card">
+        <div class="loc-card-question">É para trabalho?</div>
+        <div class="loc-card-divider"></div>
         <div class="loc-items">
           <span class="loc-item"><strong>Centro</strong> a 5 min</span>
-          <span class="loc-item"><strong>Região Industrial</strong> a 12 min</span>
           <span class="loc-item"><strong>Comércio principal</strong> a 4 min</span>
+          <span class="loc-item"><strong>Região Industrial</strong> a 12 min</span>
         </div>
       </div>
-      <div class="loc-block">
-        <div class="loc-block-label">Estudo</div>
+      <div class="loc-card">
+        <div class="loc-card-question">É para estudos?</div>
+        <div class="loc-card-divider"></div>
         <div class="loc-items">
           <span class="loc-item"><strong>Faculdade UFLA</strong> a 8 min</span>
           <span class="loc-item"><strong>Escolas públicas</strong> a 6 min</span>
           <span class="loc-item"><strong>Cursos técnicos</strong> a 7 min</span>
         </div>
       </div>
-      <div class="loc-block">
-        <div class="loc-block-label">Delivery</div>
+      <div class="loc-card">
+        <div class="loc-card-question">Nem precisa de pedir delivery</div>
+        <div class="loc-card-divider"></div>
         <div class="loc-items">
-          <span class="loc-item"><strong>Praça</strong> a 3 min</span>
-          <span class="loc-item"><strong>Bares e restaurantes</strong> a 4 min</span>
-          <span class="loc-item"><strong>Lanchonetes</strong> a 3 min</span>
+          <span class="loc-item"><strong>Pizzaria</strong> a 2 min</span>
+          <span class="loc-item"><strong>Hamburgueria</strong> a 3 min</span>
+          <span class="loc-item"><strong>Bares e sorveteria</strong> a 3 min</span>
+        </div>
+      </div>
+    </div>
+    <div class="loc-blocks">
+      <div class="loc-block">
+        <div class="loc-block-label">Compras</div>
+        <div class="loc-items">
+          <span class="loc-item"><strong>Supermercado</strong> a 1 min</span>
+          <span class="loc-item"><strong>Farmácias</strong> a 1 min</span>
+          <span class="loc-item"><strong>Hortifruti</strong> a 2 min</span>
         </div>
       </div>
       <div class="loc-block">
-        <div class="loc-block-label">Mercado</div>
+        <div class="loc-block-label">Outros Serviços</div>
         <div class="loc-items">
-          <span class="loc-item"><strong>Supermercado</strong> a 5 min</span>
-          <span class="loc-item"><strong>Farmácias</strong> a 4 min</span>
-          <span class="loc-item"><strong>Padaria</strong> a 3 min</span>
-        </div>
-      </div>
-      <div class="loc-block">
-        <div class="loc-block-label">Serviços</div>
-        <div class="loc-items">
-          <span class="loc-item"><strong>UPA</strong> a 5 min</span>
-          <span class="loc-item"><strong>Banco</strong> a 4 min</span>
-          <span class="loc-item"><strong>Cartório</strong> a 5 min</span>
+          <span class="loc-item"><strong>UPA</strong> a 4 min</span>
+          <span class="loc-item"><strong>Banco</strong> a 2 min</span>
+          <span class="loc-item"><strong>Posto de combustível</strong> a 1 min</span>
         </div>
       </div>
     </div>
@@ -647,7 +693,7 @@ nav {
       <!-- Smart -->
       <div class="planta-item">
         <div class="planta-img-wrap">
-          <img src="assets/planta-smart.jpg" alt="Planta Smart" onerror="this.src='assets/hero-piscina-sunset.jpg'">
+          <img src="assets/Planta-smart.png" alt="Planta Smart">
         </div>
         <div class="planta-info">
           <span class="planta-tag">Smart</span>
@@ -668,7 +714,7 @@ nav {
       <!-- Garden -->
       <div class="planta-item">
         <div class="planta-img-wrap">
-          <img src="assets/planta-garden.jpg" alt="Planta Garden" onerror="this.src='assets/lounge-gourmet.jpg'">
+          <img src="assets/planta-garden.png" alt="Planta Garden">
         </div>
         <div class="planta-info">
           <span class="planta-tag">Garden</span>
@@ -709,11 +755,11 @@ nav {
         <h3 class="cond-card-title serif">Quero morar</h3>
         <p class="cond-card-desc">Para quem quer sair do aluguel e ter um lar com estrutura de clube, em um dos melhores endereços da cidade.</p>
         <ul>
-          <li>Parcela menor ou igual ao aluguel atual</li>
-          <li>Financiamento bancário com as melhores taxas</li>
-          <li>Parcelamento direto com a construtora</li>
-          <li>Entrada facilitada e negociável</li>
-          <li>FGTS aceito como entrada</li>
+          <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--bronze)"></i>Parcela menor ou igual ao aluguel atual</li>
+          <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--bronze)"></i>Financiamento bancário com as melhores taxas</li>
+          <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--bronze)"></i>Parcelamento direto com a construtora</li>
+          <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--bronze)"></i>Entrada facilitada e negociável</li>
+          <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--bronze)"></i>FGTS aceito como entrada</li>
         </ul>
         <a href="https://wa.me/5535910202948?text=Olá! Quero saber sobre as condições para morar no São José." class="cond-card-cta" target="_blank">
           Simular minha parcela
@@ -724,11 +770,11 @@ nav {
         <h3 class="cond-card-title serif">Quero investir</h3>
         <p class="cond-card-desc">Para quem enxerga no São José uma oportunidade de valorização e renda passiva por meio da locação.</p>
         <ul>
-          <li>Alta demanda de aluguel na região</li>
-          <li>Gestão de locação com a Zella</li>
-          <li>Valorização acima da média local</li>
-          <li>Liquidez garantida pelo produto único</li>
-          <li>Retorno sobre investimento atrativo</li>
+          <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--sunset)"></i>Alta demanda de aluguel na região</li>
+          <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--sunset)"></i>Gestão de locação com a Zella</li>
+          <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--sunset)"></i>Valorização acima da média local</li>
+          <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--sunset)"></i>Liquidez garantida pelo produto único</li>
+          <li><i data-lucide="arrow-right" style="width:14px;height:14px;color:var(--sunset)"></i>Retorno sobre investimento atrativo</li>
         </ul>
         <a href="https://wa.me/5535910202948?text=Olá! Quero saber sobre as condições para investir no São José." class="cond-card-cta" target="_blank">
           Calcular meu retorno
@@ -794,35 +840,35 @@ nav {
       </div>
       <div class="zella-features">
         <div class="zella-feature">
-          <div class="zella-feature-icon">&#128273;</div>
+          <div class="zella-feature-icon"><i data-lucide="key" style="width:20px;height:20px;color:var(--bronze-s)"></i></div>
           <div class="zella-feature-text">
             <div class="zella-feature-title">Gestão completa</div>
             <div class="zella-feature-desc">Administração do imóvel do início ao fim, sem que você precise se preocupar com nada.</div>
           </div>
         </div>
         <div class="zella-feature">
-          <div class="zella-feature-icon">&#128176;</div>
+          <div class="zella-feature-icon"><i data-lucide="banknote" style="width:20px;height:20px;color:var(--bronze-s)"></i></div>
           <div class="zella-feature-text">
             <div class="zella-feature-title">Repasse garantido</div>
             <div class="zella-feature-desc">Você recebe pontualmente, independente da ocupação do imóvel no mês.</div>
           </div>
         </div>
         <div class="zella-feature">
-          <div class="zella-feature-icon">&#128202;</div>
+          <div class="zella-feature-icon"><i data-lucide="bar-chart-2" style="width:20px;height:20px;color:var(--bronze-s)"></i></div>
           <div class="zella-feature-text">
             <div class="zella-feature-title">Máxima ocupação</div>
             <div class="zella-feature-desc">Marketing ativo para encontrar os melhores inquilinos no menor tempo possível.</div>
           </div>
         </div>
         <div class="zella-feature">
-          <div class="zella-feature-icon">&#128196;</div>
+          <div class="zella-feature-icon"><i data-lucide="file-text" style="width:20px;height:20px;color:var(--bronze-s)"></i></div>
           <div class="zella-feature-text">
             <div class="zella-feature-title">Contratos e jurídico</div>
             <div class="zella-feature-desc">Toda a parte burocrática e jurídica resolvida pela equipe especializada da Zella.</div>
           </div>
         </div>
         <div class="zella-feature">
-          <div class="zella-feature-icon">&#128241;</div>
+          <div class="zella-feature-icon"><i data-lucide="smartphone" style="width:20px;height:20px;color:var(--bronze-s)"></i></div>
           <div class="zella-feature-text">
             <div class="zella-feature-title">Relatórios em tempo real</div>
             <div class="zella-feature-desc">Acompanhe a performance do seu imóvel pelo aplicativo, de onde estiver.</div>
@@ -869,17 +915,17 @@ nav {
       </form>
       <div class="form-contacts">
         <a href="https://wa.me/5535910202948" class="form-contact-item" target="_blank">
-          <span class="form-contact-icon">&#128172;</span>
+          <span class="form-contact-icon"><i data-lucide="message-circle" style="width:22px;height:22px;color:var(--bronze)"></i></span>
           <span class="form-contact-label">WhatsApp</span>
           <span class="form-contact-value">(35) 9 1020-2948</span>
         </a>
         <a href="https://tour360.meupasseiovirtual.com/023490/109122/sao-jose-condominio-clube/tourvirtual/" class="form-contact-item" target="_blank">
-          <span class="form-contact-icon">&#127968;</span>
+          <span class="form-contact-icon"><i data-lucide="home" style="width:22px;height:22px;color:var(--bronze)"></i></span>
           <span class="form-contact-label">Tour Virtual</span>
           <span class="form-contact-value">Visita 360°</span>
         </a>
         <div class="form-contact-item" style="cursor:default;">
-          <span class="form-contact-icon">&#128205;</span>
+          <span class="form-contact-icon"><i data-lucide="map-pin" style="width:22px;height:22px;color:var(--bronze)"></i></span>
           <span class="form-contact-label">Endereço</span>
           <span class="form-contact-value">São Sebastião do Paraíso, MG</span>
         </div>
@@ -961,12 +1007,13 @@ const obs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 
-document.querySelectorAll('.pilar-card, .rotina-card, .cond-card, .loc-block, .zella-feature, .depo').forEach(el => {
+document.querySelectorAll('.pilar-card, .rotina-card, .cond-card, .loc-block, .loc-card, .zella-feature, .depo').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(24px)';
   el.style.transition = 'opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)';
   obs.observe(el);
 });
 </script>
+<script>lucide.createIcons();</script>
 </body>
 </html>
